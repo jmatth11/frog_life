@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://87daubdf4b17"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_gk7it"]
+[ext_resource type="PackedScene" uid="uid://dvbn7rxtb2qx0" path="res://scenes/frog.tscn" id="1_sw6rm"]
+[ext_resource type="PackedScene" uid="uid://b0dk1wurqvcpw" path="res://scenes/fly.tscn" id="2_xr0t3"]
+
+[sub_resource type="Curve2D" id="Curve2D_ecfb8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 472, 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 472)
+}
+point_count = 4
+
+[node name="Main" type="Node"]
+script = ExtResource("1_gk7it")
+mob_scene = ExtResource("2_xr0t3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player" parent="." instance=ExtResource("1_sw6rm")]
+position = Vector2(576, 608)
+rotation = -1.5708
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ecfb8")
+
+[node name="MobSpawnPath" type="PathFollow2D" parent="MobPath"]
+position = Vector2(0, 472)
+rotation = -1.5708
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
