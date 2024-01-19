@@ -30,3 +30,4 @@ offset_bottom = 4.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_done" from="Tongue" to="." method="_on_tongue_animation_done"]
+[connection signal="fly_caught" from="Tongue" to="." method="_on_tongue_fly_caught"]

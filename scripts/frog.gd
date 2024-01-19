@@ -2,6 +2,7 @@ extends Area2D
 class_name Frog
 
 signal hit
+signal fly_points
 # only allow the user to launch the tongue once per animation
 var tongue_animation_in_progress = false
 var angle_to_target = 0
@@ -30,7 +31,9 @@ func _on_body_entered(_body):
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
 
-
 func _on_tongue_animation_done():
 	tongue_animation_in_progress = false
 	reset_rotation()
+
+func _on_tongue_fly_caught(num):
+	fly_points.emit(num)

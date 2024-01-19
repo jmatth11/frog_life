@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://87daubdf4b17"]
+[gd_scene load_steps=6 format=3 uid="uid://87daubdf4b17"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_gk7it"]
 [ext_resource type="PackedScene" uid="uid://dvbn7rxtb2qx0" path="res://scenes/frog.tscn" id="1_sw6rm"]
 [ext_resource type="PackedScene" uid="uid://b0dk1wurqvcpw" path="res://scenes/fly.tscn" id="2_xr0t3"]
+[ext_resource type="PackedScene" uid="uid://8hwxii5mfhby" path="res://scenes/hud.tscn" id="3_anefa"]
 
 [sub_resource type="Curve2D" id="Curve2D_ecfb8"]
 _data = {
@@ -35,4 +36,7 @@ rotation = -1.5708
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="hud" parent="." instance=ExtResource("3_anefa")]
+
+[connection signal="fly_points" from="Player" to="hud" method="_on_player_fly_points"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

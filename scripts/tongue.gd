@@ -3,6 +3,7 @@ class_name Tongue
 
 # create signal to notify when animation is done
 signal animation_done
+signal fly_caught
 
 @export var SPEED = 1000.0
 # keep track of home position and the currect target position
@@ -53,6 +54,6 @@ func tongue_action_done():
 			var obj = targets_to_dispose[index] as Fly
 			obj.delegate = null
 			obj.queue_free()
+		fly_caught.emit(targets_to_dispose.size())
 		targets_to_dispose.clear()
 	animation_done.emit()
-	
