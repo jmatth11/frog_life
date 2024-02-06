@@ -10,6 +10,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func _input(event):
+	GlobalState.common_input_handler(get_tree().root, event)
 
 func _on_mob_timer_timeout():
 	var fly = mob_scene.instantiate()
