@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvbn7rxtb2qx0"]
+[gd_scene load_steps=3 format=3 uid="uid://dvbn7rxtb2qx0"]
 
 [ext_resource type="Script" path="res://scripts/frog.gd" id="1_gh8p2"]
-[ext_resource type="PackedScene" uid="uid://f2p0jh7fyhe5" path="res://scenes/tongue.tscn" id="2_rh3ke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wwil"]
 size = Vector2(40, 39)
@@ -10,8 +9,6 @@ size = Vector2(40, 39)
 scale = Vector2(2, 2)
 script = ExtResource("1_gh8p2")
 metadata/_edit_group_ = true
-
-[node name="Tongue" parent="." instance=ExtResource("2_rh3ke")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1wwil")
@@ -29,5 +26,3 @@ offset_right = 20.0
 offset_bottom = 4.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_done" from="Tongue" to="." method="_on_tongue_animation_done"]
-[connection signal="fly_caught" from="Tongue" to="." method="_on_tongue_fly_caught"]

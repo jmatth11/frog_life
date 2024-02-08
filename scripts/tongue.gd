@@ -10,11 +10,11 @@ signal fly_caught
 var home_position = Vector2.ZERO
 var target_position = Vector2.ZERO
 var action_done = true
-var targets_to_dispose: Array
+var targets_to_dispose: Array[Fly]
 
-func _ready():
-	home_position = global_position
-	target_position = global_position
+func set_start_pos(pos: Vector2):
+	home_position = pos
+	target_position = pos
 
 func _physics_process(delta):
 	# check if position has been reached or not
@@ -39,8 +39,13 @@ func handle_target_collision():
 	# to prevent bugging out return home once collision happens
 	target_position = home_position
 	var collision = get_last_slide_collision()
+	var col_pos = collision.get_position()
 	var target = collision.get_collider()
 	if target is Fly:
+		# TODO maybe clean this up a bit. Create method on fly object to handle setting this stuff
+		target.disable_collision()
+		# TODO figure out how to get the fly to be more attached to the tongue
+		target.global_position = col_pos
 		target.linear_velocity = Vector2.ZERO
 		target.captured = true
 		target.delegate = self
@@ -51,9 +56,10 @@ func tongue_action_done():
 	action_done = true
 	if not targets_to_dispose.is_empty():
 		for index in targets_to_dispose.size():
-			var obj = targets_to_dispose[index] as Fly
-			obj.delegate = null
-			obj.queue_free()
+			var obj = targets_to_dispose[index]
+			if obj != null:
+				obj.delegate = null
+				obj.queue_free()
 		fly_caught.emit(targets_to_dispose.size())
 		targets_to_dispose.clear()
 	animation_done.emit()
