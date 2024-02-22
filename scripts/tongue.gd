@@ -38,14 +38,9 @@ func handle_target_collision():
 	# to prevent bugging out return home once collision happens
 	target_position = home_position
 	var collision = get_last_slide_collision()
-	var col_pos = collision.get_position()
 	var target = collision.get_collider()
 	if target is Fly:
-		# TODO maybe clean this up a bit. Create method on fly object to handle setting this stuff
-		target.disable_collision()
-		target.velocity = Vector2.ZERO
-		target.captured = true
-		target.reparent(self)
+		target.capture(self)
 		targets_to_dispose.push_back(target)
 		
 func tongue_action_done():

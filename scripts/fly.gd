@@ -11,6 +11,13 @@ func _ready():
 func _process(delta):
 	move_and_slide()
 
+func capture(tongue: Tongue):
+	disable_collision()
+	velocity = Vector2.ZERO
+	captured = true
+	# reparent tongue so we follow to the tongue back to the home position
+	reparent(tongue)
+
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 	
