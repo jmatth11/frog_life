@@ -23,5 +23,5 @@ func _on_mob_timer_timeout():
 	direction += randf_range(-PI / 4, PI / 4)
 	fly.rotation = direction
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	fly.linear_velocity = velocity.rotated(direction)
+	fly.velocity = velocity.rotated(direction)
 	add_child(fly)

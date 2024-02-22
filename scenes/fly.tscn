@@ -5,10 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmb16"]
 size = Vector2(40, 40)
 
-[node name="Fly" type="RigidBody2D"]
+[node name="Fly" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
-gravity_scale = 0.0
 script = ExtResource("1_32okf")
 metadata/_edit_group_ = true
 

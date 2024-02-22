@@ -3,7 +3,6 @@ class_name Tongue
 
 # create signal to notify when animation is done
 signal animation_done
-signal fly_caught
 
 @export var SPEED = 1000.0
 # keep track of home position and the currect target position
@@ -16,7 +15,7 @@ func set_start_pos(pos: Vector2):
 	home_position = pos
 	target_position = pos
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# check if position has been reached or not
 	var pos_dif = (global_position - target_position).length()
 	var direction = global_position.direction_to(target_position) * SPEED
@@ -44,11 +43,9 @@ func handle_target_collision():
 	if target is Fly:
 		# TODO maybe clean this up a bit. Create method on fly object to handle setting this stuff
 		target.disable_collision()
-		# TODO figure out how to get the fly to be more attached to the tongue
-		target.global_position = col_pos
-		target.linear_velocity = Vector2.ZERO
+		target.velocity = Vector2.ZERO
 		target.captured = true
-		target.delegate = self
+		target.reparent(self)
 		targets_to_dispose.push_back(target)
 		
 func tongue_action_done():
@@ -58,8 +55,7 @@ func tongue_action_done():
 		for index in targets_to_dispose.size():
 			var obj = targets_to_dispose[index]
 			if obj != null:
-				obj.delegate = null
 				obj.queue_free()
-		fly_caught.emit(targets_to_dispose.size())
+		GlobalState.update_score.emit(targets_to_dispose.size())
 		targets_to_dispose.clear()
 	animation_done.emit()

@@ -6,7 +6,8 @@ var current_points = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Score.text = "0" # Replace with function body.
+	GlobalState.update_score.connect(Callable(_on_player_fly_points))
+	$Score.text = "0"
 	current_points = 0
 
 func _on_player_fly_points(num):

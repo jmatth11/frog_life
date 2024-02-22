@@ -38,5 +38,4 @@ wait_time = 0.5
 
 [node name="hud" parent="." instance=ExtResource("3_anefa")]
 
-[connection signal="fly_points" from="Player" to="hud" method="_on_player_fly_points"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

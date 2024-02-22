@@ -2,7 +2,6 @@ extends Area2D
 class_name Frog
 
 signal hit
-signal fly_points
 # only allow the user to launch the tongue once per animation
 var tongue_animation_in_progress = false
 var angle_to_target = 0
@@ -42,13 +41,8 @@ func _on_tongue_animation_done():
 	remove_child(tongue)
 	reset_rotation()
 
-func _on_tongue_fly_caught(num):
-	fly_points.emit(num)
-
 func load_tongue():
 	tongue = load("res://scenes/tongue.tscn").instantiate()
 	tongue.set_start_pos(global_position)
 	# manually add connection to signal
 	tongue.animation_done.connect(Callable(_on_tongue_animation_done))
-	# TODO rework this to notify a global observer to update the score
-	tongue.fly_caught.connect(Callable(_on_tongue_fly_caught))

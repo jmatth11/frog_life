@@ -3,6 +3,8 @@ extends Node
 var paused: bool = false
 var game_started: bool = false
 
+signal update_score
+
 # extract out default values to a reset function
 func start_game():
 	game_started = true
