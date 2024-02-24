@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvbn7rxtb2qx0"]
+[gd_scene load_steps=5 format=3 uid="uid://dvbn7rxtb2qx0"]
 
 [ext_resource type="Script" path="res://scripts/frog.gd" id="1_gh8p2"]
+[ext_resource type="Texture2D" uid="uid://bt0344l8wmvoq" path="res://images/frog_1.png" id="2_vwmx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wwil"]
 size = Vector2(40, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2xcjd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vwmx3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Frog" type="Area2D"]
 scale = Vector2(2, 2)
@@ -13,16 +25,9 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1wwil")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0.262745, 0.564706, 0.317647, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_2xcjd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
