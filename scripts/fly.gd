@@ -6,13 +6,15 @@ var captured = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	captured = false
+	$AnimatedSprite2D.play("fly")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	move_and_slide()
 
 func capture(tongue: Tongue):
 	disable_collision()
+	$AnimatedSprite2D.stop()
 	velocity = Vector2.ZERO
 	captured = true
 	# reparent tongue so we follow to the tongue back to the home position

@@ -9,6 +9,7 @@ var tongue: Tongue = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite2D.play("default")
 	reset_rotation()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,12 +23,15 @@ func _input(event):
 				load_tongue()
 			if !tongue_animation_in_progress:
 				tongue_animation_in_progress = true
-				add_child(tongue)
-				move_child(tongue, 0)
-				tongue.target_position = event.position
 				# get_angle_to get's the angle relative to the beginning position.
 				# so since I want to start with a -90 degree offset I need to account for that
 				angle_to_target = get_angle_to(event.position) - deg_to_rad(90)
+				$AnimatedSprite2D.play("attack")
+				await $AnimatedSprite2D.animation_finished
+				$AnimatedSprite2D.play("default")
+				add_child(tongue)
+				move_child(tongue, 0)
+				tongue.target_position = event.position
 
 func reset_rotation():
 	angle_to_target = deg_to_rad(-90)
