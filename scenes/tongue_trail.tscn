@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh25kpv0h8tpp"]
+
+[ext_resource type="Script" path="res://scripts/tongue_trail.gd" id="1_tq2cn"]
+
+[sub_resource type="Curve" id="Curve_jov5p"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="Line2D" type="Line2D"]
+top_level = true
+position = Vector2(54, 13)
+scale = Vector2(1.05556, 1.02498)
+points = PackedVector2Array(-50.2103, 17.4146, -51.1577, -45.0732)
+width = 40.0
+width_curve = SubResource("Curve_jov5p")
+default_color = Color(0.894118, 0.494118, 0.662745, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("1_tq2cn")

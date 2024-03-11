@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5gawtaw0y8n2"]
+
+[ext_resource type="Texture2D" uid="uid://bfrxmgat8pmpf" path="res://images/fish2.png" id="1_emjte"]
+[ext_resource type="Script" path="res://scripts/common_fish.gd" id="1_nwvl2"]
+[ext_resource type="Texture2D" uid="uid://bcflx5g44nf3q" path="res://images/fish1.png" id="1_yjib5"]
+[ext_resource type="Shader" path="res://shaders/ripple.gdshader" id="2_q3c88"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bim5t"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xss8i"]
+frequency = 0.006
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w6v4h"]
+seamless = true
+noise = SubResource("FastNoiseLite_xss8i")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_42pe4"]
+frequency = 0.0054
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cs3p6"]
+seamless = true
+noise = SubResource("FastNoiseLite_42pe4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvuc0"]
+shader = ExtResource("2_q3c88")
+shader_parameter/scroll1 = Vector2(0.05, 0.05)
+shader_parameter/scroll2 = Vector2(0.95, -0.05)
+shader_parameter/distortion_range = 0.0560001
+shader_parameter/noise1 = SubResource("NoiseTexture2D_w6v4h")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_cs3p6")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cypyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_emjte")
+}],
+"loop": true,
+"name": &"clown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yjib5")
+}],
+"loop": true,
+"name": &"common",
+"speed": 5.0
+}]
+
+[node name="Fish" type="CharacterBody2D"]
+z_index = -2
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_nwvl2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bim5t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_fvuc0")
+scale = Vector2(0.25, 0.26)
+sprite_frames = SubResource("SpriteFrames_cypyf")
+animation = &"common"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

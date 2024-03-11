@@ -1,9 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://87daubdf4b17"]
+[gd_scene load_steps=11 format=3 uid="uid://87daubdf4b17"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_gk7it"]
 [ext_resource type="PackedScene" uid="uid://dvbn7rxtb2qx0" path="res://scenes/frog.tscn" id="1_sw6rm"]
 [ext_resource type="PackedScene" uid="uid://b0dk1wurqvcpw" path="res://scenes/fly.tscn" id="2_xr0t3"]
+[ext_resource type="Texture2D" uid="uid://dq4lb8ca6kgur" path="res://images/seabed.png" id="3_8x2ci"]
 [ext_resource type="PackedScene" uid="uid://8hwxii5mfhby" path="res://scenes/hud.tscn" id="3_anefa"]
+[ext_resource type="PackedScene" uid="uid://c5gawtaw0y8n2" path="res://scenes/common_fish.tscn" id="3_ujhs1"]
+[ext_resource type="Material" uid="uid://cksl054aq6i73" path="res://scenes/materials/ripple.tres" id="4_ciuj0"]
+[ext_resource type="Material" uid="uid://n63bwe6fjxyj" path="res://scenes/materials/water.tres" id="5_vk7w5"]
+
+[sub_resource type="Curve2D" id="Curve2D_5e86o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 640, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1160, 0, 0, 0, 0, 0, 1160, 656, 0, 0, 0, 0, 0, 648)
+}
+point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_ecfb8"]
 _data = {
@@ -14,19 +24,38 @@ point_count = 4
 [node name="Main" type="Node"]
 script = ExtResource("1_gk7it")
 mob_scene = ExtResource("2_xr0t3")
+fish_scene = ExtResource("3_ujhs1")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -3
+material = ExtResource("4_ciuj0")
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_8x2ci")
+expand_mode = 1
+
+[node name="FishPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_5e86o")
+
+[node name="FishSpawnPath" type="PathFollow2D" parent="FishPath"]
+position = Vector2(0, 648)
+rotation = -1.5708
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -1
+material = ExtResource("5_vk7w5")
+offset_right = 1160.0
+offset_bottom = 648.0
+texture = ExtResource("3_8x2ci")
+expand_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_sw6rm")]
 position = Vector2(576, 608)
 rotation = -1.5708
 
 [node name="MobPath" type="Path2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(1.00694, 1)
 curve = SubResource("Curve2D_ecfb8")
 
 [node name="MobSpawnPath" type="PathFollow2D" parent="MobPath"]
@@ -35,6 +64,8 @@ rotation = -1.5708
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Fish1Timer" type="Timer" parent="."]
 
 [node name="hud" parent="." instance=ExtResource("3_anefa")]
 
