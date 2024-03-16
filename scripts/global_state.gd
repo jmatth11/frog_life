@@ -20,14 +20,16 @@ func set_pause_game(root, flag):
 	paused = flag
 	if root.has_node("StartMenu"):
 		return
-	var escape_menu = root.get_node("EscapeMenu")
+	
 	if flag:
-		if !escape_menu:
+		if !root.has_node("EscapeMenu"):
 			paused = true
-			escape_menu = load("res://scenes/escape_menu.tscn").instantiate()
+			var escape_menu = load("res://scenes/escape_menu.tscn").instantiate()
 			root.add_child(escape_menu)
+			root.move_child(escape_menu, 0)
 	else:
-		if escape_menu:
+		if root.has_node("EscapeMenu"):
+			var escape_menu = root.get_node("EscapeMenu")
 			escape_menu.queue_free()
 			paused = false
 			

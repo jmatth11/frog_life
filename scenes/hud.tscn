@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8hwxii5mfhby"]
+[gd_scene load_steps=3 format=3 uid="uid://8hwxii5mfhby"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ljp8f"]
+[ext_resource type="FontFile" uid="uid://bs553y0y8tf65" path="res://font/PixelifySans-Regular.ttf" id="2_yxm1l"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_ljp8f")
@@ -20,6 +21,7 @@ offset_top = -26.0
 offset_right = 119.0
 offset_bottom = 27.0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_yxm1l")
 theme_override_font_sizes/font_size = 38
 text = "Score:"
 
@@ -37,6 +39,7 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_yxm1l")
 theme_override_font_sizes/font_size = 38
 text = "0"
 horizontal_alignment = 1
@@ -67,4 +70,5 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_yxm1l")
 text = "100%"

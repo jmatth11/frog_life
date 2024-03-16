@@ -6,6 +6,7 @@ signal hit
 var tongue_animation_in_progress = false
 var angle_to_target = 0
 var tongue: Tongue = null
+var health = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

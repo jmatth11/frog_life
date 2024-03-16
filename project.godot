@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 SceneManager="*res://scripts/scene_manager.gd"
 GlobalState="*res://scripts/global_state.gd"
 
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
+
 [input]
 
 EscapeMenu={

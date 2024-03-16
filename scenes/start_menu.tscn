@@ -1,53 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://c682xm0yu20lx"]
+[gd_scene load_steps=6 format=3 uid="uid://c682xm0yu20lx"]
 
 [ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_priu5"]
+[ext_resource type="PackedScene" uid="uid://cbo82f4jydy2s" path="res://scenes/pond.tscn" id="2_11pys"]
+[ext_resource type="Theme" uid="uid://dtlqxkjwjtqrb" path="res://scenes/themes/control.tres" id="3_fgxyf"]
+[ext_resource type="Texture2D" uid="uid://5pe7xb0ynt4i" path="res://images/title.png" id="3_t04py"]
+[ext_resource type="Texture2D" uid="uid://dfxqeikgppedy" path="res://images/panel-border-2.png" id="4_r2p4l"]
 
 [node name="StartMenu" type="CanvasLayer"]
 script = ExtResource("1_priu5")
 
-[node name="Label" type="Label" parent="."]
+[node name="Pond" parent="." instance=ExtResource("2_11pys")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -133.5
-offset_right = 133.5
-offset_bottom = 88.0
+offset_left = -304.0
+offset_top = 32.0
+offset_right = 296.0
+offset_bottom = 272.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 64
-text = "Frog Life"
+size_flags_horizontal = 0
+texture = ExtResource("3_t04py")
 
-[node name="Start" type="Button" parent="."]
+[node name="Panel" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -30.0
-offset_right = 65.0
-offset_bottom = 30.0
+offset_left = -96.0
+offset_top = 12.0
+offset_right = 100.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 224.0
+texture = ExtResource("4_r2p4l")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -66.0
+offset_right = 60.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Start" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 8
+theme = ExtResource("3_fgxyf")
 theme_override_font_sizes/font_size = 32
 text = "Start
 "
 
-[node name="Quit" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = 60.0
-offset_right = 57.0
-offset_bottom = 113.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Quit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_fgxyf")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 
-[connection signal="pressed" from="Start" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
