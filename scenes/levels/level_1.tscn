@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8t7h38i816x1"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_n128k"]
+
+[sub_resource type="Curve2D" id="Curve2D_0n0nc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 12, 13, -118.794, -47.3762, 118.794, 47.3762, 182, 189, -43.8406, 15.5563, 43.8406, -15.5563, 365, 201, 55.1543, 7.77818, -55.1543, -7.77818, 378, 92, 18.3848, -20.5061, -18.3848, 20.5061, 286, 105, 0, 0, 0, 0, 278, 168)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_7lfaw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 1, 45.9619, -46.6691, -45.9619, 46.6691, 1065, 138, 70.0036, -9.8995, -70.0036, 9.8995, 914, 206, 28.2843, 36.7696, -28.2843, -36.7696, 740, 188, -22.6274, 19.799, 22.6274, -19.799, 756, 98, -29.6985, -15.5564, 29.6985, 15.5564, 860, 61, 0, 0, 0, 0, 870, 136)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_ekivu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 0, 0, 0, 0, 0, 1150, -4)
+}
+point_count = 2
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_n128k")
+
+[node name="Path1" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0n0nc")
+
+[node name="Follow" type="PathFollow2D" parent="Path1"]
+position = Vector2(12, 13)
+rotation = 0.802737
+loop = false
+
+[node name="Path2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7lfaw")
+
+[node name="Follow" type="PathFollow2D" parent="Path2"]
+position = Vector2(1152, 1)
+rotation = 2.13658
+loop = false
+
+[node name="Main" type="Path2D" parent="."]
+position = Vector2(16.1784, 0)
+scale = Vector2(0.873606, 1e-05)
+curve = SubResource("Curve2D_ekivu")
+
+[node name="Follow" type="PathFollow2D" parent="Main"]
+position = Vector2(128, 0)
+rotation = -0.00391387

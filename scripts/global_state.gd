@@ -2,6 +2,7 @@ extends Node
 
 var paused: bool = false
 var game_started: bool = false
+var current_level: int = 1
 
 signal update_score
 

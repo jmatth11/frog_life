@@ -13,5 +13,7 @@ func _deferred_scene_switch(res_path) -> void:
 	current_scene.free()
 	var s = load(res_path)
 	current_scene = s.instantiate()
+	if current_scene is Main:
+		current_scene.load_level(GlobalState.current_level)
 	get_tree().root.add_child(current_scene)
 	get_tree().current_scene = current_scene
