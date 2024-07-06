@@ -6,7 +6,6 @@ static func add_fly(sprite:Node2D, path_count: int, parent:Node2D, path_getter: 
 	for i in path_count:
 		var p: PathFollow2D = path_getter.call("Path%d/Follow" % (i + 1))
 		if p.get_child_count() == 0:
-			print("follow path fly")
 			p.progress = 0
 			p.add_child(sprite)
 			useMainPath = false
