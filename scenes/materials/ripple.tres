@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cksl054aq6i73"]
 
-[ext_resource type="Shader" path="res://shaders/ripple.gdshader" id="1_pkqnv"]
+[ext_resource type="Shader" uid="uid://cn63ojhfngvjo" path="res://shaders/ripple.gdshader" id="1_pkqnv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_w5jnn"]
 noise_type = 3
@@ -19,8 +19,8 @@ noise = SubResource("FastNoiseLite_r3hcw")
 
 [resource]
 shader = ExtResource("1_pkqnv")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_5ne03")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_vlya3")
 shader_parameter/scroll1 = Vector2(0.05, 0.05)
 shader_parameter/scroll2 = Vector2(-0.05, -0.05)
 shader_parameter/distortion_range = 0.2
-shader_parameter/noise1 = SubResource("NoiseTexture2D_5ne03")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_vlya3")

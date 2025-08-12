@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://n63bwe6fjxyj"]
 
-[ext_resource type="Shader" path="res://shaders/water.gdshader" id="1_fj6ts"]
+[ext_resource type="Shader" uid="uid://brpfb7k6ns2pe" path="res://shaders/water.gdshader" id="1_fj6ts"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t3bmw"]
 seed = 5
@@ -25,6 +25,8 @@ noise = SubResource("FastNoiseLite_wbhd5")
 
 [resource]
 shader = ExtResource("1_fj6ts")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_75bcg")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_qvyin")
 shader_parameter/scroll1 = Vector2(0.05, 0.05)
 shader_parameter/scroll2 = Vector2(-0.05, -0.05)
 shader_parameter/distortion_range = -0.00199995
@@ -32,5 +34,3 @@ shader_parameter/tone_color = Color(0.215686, 0.454902, 1, 1)
 shader_parameter/top_color = Color(0.0470588, 0.345098, 0.572549, 1)
 shader_parameter/light_start = 0.179
 shader_parameter/light_end = 0.842
-shader_parameter/noise1 = SubResource("NoiseTexture2D_75bcg")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_qvyin")

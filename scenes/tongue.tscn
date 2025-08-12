@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://f2p0jh7fyhe5"]
 
-[ext_resource type="Script" path="res://scripts/tongue.gd" id="1_k67gi"]
+[ext_resource type="Script" uid="uid://nb1u2vba8rjs" path="res://scripts/tongue.gd" id="1_k67gi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnuit"]
 radius = 40.0

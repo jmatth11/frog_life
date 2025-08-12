@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8t7h38i816x1"]
 
-[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_n128k"]
+[ext_resource type="Script" uid="uid://b5xp0lkh50c6v" path="res://scenes/levels/level_1.gd" id="1_n128k"]
 
 [sub_resource type="Curve2D" id="Curve2D_0n0nc"]
 _data = {

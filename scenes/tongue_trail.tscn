@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bh25kpv0h8tpp"]
 
-[ext_resource type="Script" path="res://scripts/tongue_trail.gd" id="1_tq2cn"]
+[ext_resource type="Script" uid="uid://0f4x2tulff0c" path="res://scripts/tongue_trail.gd" id="1_tq2cn"]
 
 [sub_resource type="Curve" id="Curve_jov5p"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]

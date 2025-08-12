@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvbn7rxtb2qx0"]
 
-[ext_resource type="Script" path="res://scripts/frog.gd" id="1_gh8p2"]
+[ext_resource type="Script" uid="uid://brn2hshy1nl01" path="res://scripts/frog.gd" id="1_gh8p2"]
 [ext_resource type="Texture2D" uid="uid://282f0wtu07r" path="res://images/frog_2.png" id="2_8v06f"]
 [ext_resource type="Texture2D" uid="uid://c4qsfiagq2oyp" path="res://images/frog_1.png" id="2_vwmx3"]
 

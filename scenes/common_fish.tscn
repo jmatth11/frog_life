@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://c5gawtaw0y8n2"]
 
 [ext_resource type="Texture2D" uid="uid://bfrxmgat8pmpf" path="res://images/fish2.png" id="1_emjte"]
-[ext_resource type="Script" path="res://scripts/common_fish.gd" id="1_nwvl2"]
+[ext_resource type="Script" uid="uid://kajcp6ce87hm" path="res://scripts/common_fish.gd" id="1_nwvl2"]
 [ext_resource type="Texture2D" uid="uid://bcflx5g44nf3q" path="res://images/fish1.png" id="1_yjib5"]
-[ext_resource type="Shader" path="res://shaders/ripple.gdshader" id="2_q3c88"]
+[ext_resource type="Shader" uid="uid://cn63ojhfngvjo" path="res://shaders/ripple.gdshader" id="2_q3c88"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bim5t"]
 
@@ -23,11 +23,11 @@ noise = SubResource("FastNoiseLite_42pe4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fvuc0"]
 shader = ExtResource("2_q3c88")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_w6v4h")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_cs3p6")
 shader_parameter/scroll1 = Vector2(0.05, 0.05)
 shader_parameter/scroll2 = Vector2(0.95, -0.05)
 shader_parameter/distortion_range = 0.0560001
-shader_parameter/noise1 = SubResource("NoiseTexture2D_w6v4h")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_cs3p6")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cypyf"]
 animations = [{
